@@ -1,0 +1,6 @@
+# yosys -c syn/yosys_synth.ys   (estimasi area; ganti ZS=31 agar estimator termal kecil)
+read_verilog -sv rtl/wt_pe.sv rtl/wt_lane_steer.sv rtl/wt_skew.sv rtl/wt_systolic_array.sv \
+                 rtl/wt_thermal_fluid.sv rtl/wt_ice_wall_ctrl.sv rtl/wt_npu_top.sv
+hierarchy -top wt_npu_top -chparam N 62 -chparam ZS 31
+synth -flatten
+stat
